@@ -98,8 +98,7 @@ function generateSignal(){
     "⚡ Measuring momentum...";
 
   setTimeout(function(){
-    const pair = document.getElementById("pair").value.split("/");
-fetch(`https://www.alphavantage.co/query?function=FX_INTRADAY&from_symbol=${pair[0]}&to_symbol=${pair[1]}&interval=1min&apikey=${API_KEY}`)
+    fetch(`https://www.alphavantage.co/query?function=FX_INTRADAY&from_symbol=${pair[0]}&to_symbol=${pair[1]}&interval=1min&apikey=${API_KEY}`)
 .then(response => response.json())
 .then(data => {
 
