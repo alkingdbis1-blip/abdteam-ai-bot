@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ABDTEAM AI BOT</title>
+
+  <style>
+    body{
+      background:#0b0b0b;
+      color:white;
+      font-family:Arial;
+      text-align:center;
+      padding-top:50px;
+    }
+
+    .box{
+      width:350px;
+      margin:auto;
+      background:#151515;
+      padding:25px;
+      border-radius:20px;
+      box-shadow:0 0 20px gold;
+    }
+
+    h1{
+      color:gold;
+    }
+
+    select,button{
+      width:100%;
+      padding:15px;
+      margin-top:15px;
+      border:none;
+      border-radius:10px;
+      font-size:16px;
+    }
+
+    button{
+      background:gold;
+      color:black;
+      font-weight:bold;
+      cursor:pointer;
+    }
+
+    #result{
+      margin-top:25px;
+      font-size:28px;
+      font-weight:bold;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="box">
+
+<h1>ABDTEAM AI SIGNALS</h1>
+
+<select id="pair">
+  <option>EUR/USD</option>
+  <option>GBP/USD</option>
+  <option>USD/JPY</option>
+  <option>EUR/JPY</option>
+</select>
+
+<select id="time">
+  <option>1 Minute</option>
+  <option>2 Minutes</option>
+  <option>5 Minutes</option>
+</select>
+
+<button onclick="generateSignal()">
+START ANALYSIS
+</button>
+
+<div id="result"></div>
+
+</div>
+
+<script>
+
+function generateSignal(){
+
+let signals = ["CALL 🟢","PUT 🔴"];
+
+let randomSignal =
+signals[Math.floor(Math.random()*signals.length)];
+
+document.getElementById("result").innerHTML =
+randomSignal;
+
+}
+
+</script>
+
+</body>
+</html>
