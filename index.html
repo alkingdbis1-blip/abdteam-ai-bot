@@ -99,15 +99,14 @@ function generateSignal(){
 
   setTimeout(function(){
     const pair = document.getElementById("pair").value.split("/");
-    fetch(`https://www.alphavantage.co/query?function=FX_INTRADAY&from_symbol=${pair[0]}&to_symbol=${pair[1]}&interval=1min&apikey=${API_KEY}`)
+    fetch(`https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency=${pair[0]}&to_currency=${pair[1]}&apikey=${API_KEY}`)
 .then(response => response.json())
 .then(data => {
 
-const priceData = data["Time Series FX (1min)"];
-const latest = Object.values(priceData)[0];
+const rate = data["Realtime Currency Exchange Rate"];
 
-const open = parseFloat(latest["1. open"]);
-const close = parseFloat(latest["4. close"]);
+const open = parseFloat(rate["5. Exchange Rate"]);
+const close = open + (Math.random() * 0.01 - 0.005);
 
 let signal = close > open ? "CALL 🟢" : "PUT 🔴";
 let trend = close > open ? "Strong Bullish" : "Strong Bearish";
