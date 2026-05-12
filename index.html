@@ -1,112 +1,97 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>ABDTEAM AI BOT</title>
-
-  <style>
-    body{
-      background:#0b0b0b;
-      color:white;
-      font-family:Arial;
-      text-align:center;
-      padding-top:50px;
-    }
-
-    .box{
-      width:350px;
-      margin:auto;
-      background:#151515;
-      padding:25px;
-      border-radius:20px;
-      box-shadow:0 0 20px gold;
-    }
-
-    h1{
-      color:gold;
-    }
-
-    select,button{
-      width:100%;
-      padding:15px;
-      margin-top:15px;
-      border:none;
-      border-radius:10px;
-      font-size:16px;
-    }
-
-    button{
-      background:gold;
-      color:black;
-      font-weight:bold;
-      cursor:pointer;
-    }
-
-    #result{
-      margin-top:25px;
-      font-size:28px;
-      font-weight:bold;
-    }
-  </style>
-</head>
-
-<body>
-
-<div class="box">
-
-<h1>ABDTEAM AI SIGNALS</h1>
-
-<select id="pair">
-  <option>EUR/USD</option>
-  <option>GBP/USD</option>
-  <option>USD/JPY</option>
-  <option>EUR/JPY</option>
-</select>
-
-<select id="time">
-  <option>1 Minute</option>
-  <option>2 Minutes</option>
-  <option>5 Minutes</option>
-</select>
-
-<button onclick="generateSignal()">
-START ANALYSIS
-</button>
-
-<div id="result"></div>
-
-</div>
-
 <script>
+
 function generateSignal(){
 
-  document.getElementById("result").innerHTML =
-  "🤖 AI SCANNING MARKET...<br><br>⏳ Reading candles...";
+document.getElementById("result").innerHTML =
+"🤖 AI SCANNING MARKET...<br><br>" +
+"📡 Reading candles...<br>" +
+"📊 Checking trend...";
 
-  setTimeout(function(){
+setTimeout(function(){
 
-    let signals = ["CALL 🟢", "PUT 🔴"];
-    let trend = ["Bullish Trend", "Bearish Trend", "Sideways Market"];
-    let rsi = ["RSI Oversold", "RSI Overbought", "RSI Neutral"];
-    let support = ["Strong Support Zone", "Strong Resistance Zone", "Breakout Area"];
-    let confidence = Math.floor(Math.random() * 16) + 80;
+let signals = ["CALL 🟢","PUT 🔴","NO TRADE ⚠️"];
 
-    let randomSignal = signals[Math.floor(Math.random()*signals.length)];
+let trends = [
+"Strong Bullish",
+"Strong Bearish",
+"Sideways Market"
+];
 
-    document.getElementById("result").innerHTML =
-    "🤖 AI MARKET ANALYSIS<br><br>" +
-    "✔ Trend: " + trend[Math.floor(Math.random()*trend.length)] + "<br>" +
-    "✔ RSI: " + rsi[Math.floor(Math.random()*rsi.length)] + "<br>" +
-    "✔ Zone: " + support[Math.floor(Math.random()*support.length)] + "<br>" +
-    "✔ Momentum: Active<br><br>" +
-    "FINAL SIGNAL:<br>" +
-    randomSignal + "<br>" +
-    "Confidence: " + confidence + "%";
+let zones = [
+"Support Zone",
+"Resistance Zone",
+"Breakout Area",
+"Liquidity Grab"
+];
 
-  }, 2000);
+let momentum = [
+"High Momentum",
+"Weak Momentum",
+"Explosive Movement"
+];
+
+let reasons = [
+"Trend continuation confirmed",
+"Strong candle rejection",
+"EMA crossover detected",
+"RSI reversal signal",
+"Breakout confirmed",
+"Volume spike detected"
+];
+
+let signal =
+signals[Math.floor(Math.random()*signals.length)];
+
+let confidence =
+Math.floor(Math.random()*15)+85;
+
+let rsi =
+Math.floor(Math.random()*40)+30;
+
+let emaFast =
+(Math.random()*100).toFixed(2);
+
+let emaSlow =
+(Math.random()*100).toFixed(2);
+
+document.getElementById("result").innerHTML =
+
+"🤖 AI MARKET ANALYSIS<br><br>" +
+
+"📈 Trend: " +
+trends[Math.floor(Math.random()*trends.length)] +
+"<br><br>" +
+
+"📍 Zone: " +
+zones[Math.floor(Math.random()*zones.length)] +
+"<br><br>" +
+
+"⚡ Momentum: " +
+momentum[Math.floor(Math.random()*momentum.length)] +
+"<br><br>" +
+
+"📊 RSI: " + rsi +
+"<br><br>" +
+
+"📉 EMA 9: " + emaFast +
+"<br>" +
+
+"📈 EMA 21: " + emaSlow +
+"<br><br>" +
+
+"🧠 Reason: " +
+reasons[Math.floor(Math.random()*reasons.length)] +
+"<br><br>" +
+
+"🎯 FINAL SIGNAL:<br>" +
+signal +
+"<br><br>" +
+
+"🔥 Confidence: " +
+confidence + "%";
+
+},2500);
+
 }
-</script>
 
-</body>
-</html>
+</script>
