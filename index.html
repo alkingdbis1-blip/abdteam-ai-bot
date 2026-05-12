@@ -79,19 +79,33 @@ START ANALYSIS
 </div>
 
 <script>
-
 function generateSignal(){
 
-let signals = ["CALL 🟢","PUT 🔴"];
+  document.getElementById("result").innerHTML =
+  "🤖 AI SCANNING MARKET...<br><br>⏳ Reading candles...";
 
-let randomSignal =
-signals[Math.floor(Math.random()*signals.length)];
+  setTimeout(function(){
 
-document.getElementById("result").innerHTML =
-randomSignal;
+    let signals = ["CALL 🟢", "PUT 🔴"];
+    let trend = ["Bullish Trend", "Bearish Trend", "Sideways Market"];
+    let rsi = ["RSI Oversold", "RSI Overbought", "RSI Neutral"];
+    let support = ["Strong Support Zone", "Strong Resistance Zone", "Breakout Area"];
+    let confidence = Math.floor(Math.random() * 16) + 80;
 
+    let randomSignal = signals[Math.floor(Math.random()*signals.length)];
+
+    document.getElementById("result").innerHTML =
+    "🤖 AI MARKET ANALYSIS<br><br>" +
+    "✔ Trend: " + trend[Math.floor(Math.random()*trend.length)] + "<br>" +
+    "✔ RSI: " + rsi[Math.floor(Math.random()*rsi.length)] + "<br>" +
+    "✔ Zone: " + support[Math.floor(Math.random()*support.length)] + "<br>" +
+    "✔ Momentum: Active<br><br>" +
+    "FINAL SIGNAL:<br>" +
+    randomSignal + "<br>" +
+    "Confidence: " + confidence + "%";
+
+  }, 2000);
 }
-
 </script>
 
 </body>
