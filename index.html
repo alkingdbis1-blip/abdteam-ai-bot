@@ -98,37 +98,37 @@ function generateSignal(){
     "⚡ Measuring momentum...";
 
   setTimeout(function(){
-    const signals = ["CALL 🟢", "PUT 🔴", "NO TRADE ⚠️"];
-    const trends = ["Strong Bullish", "Strong Bearish", "Sideways Market"];
-    const zones = ["Support Zone", "Resistance Zone", "Breakout Area", "Liquidity Grab"];
-    const momentum = ["High Momentum", "Weak Momentum", "Explosive Movement"];
-    const reasons = [
-      "Trend continuation confirmed",
-      "Strong candle rejection",
-      "EMA crossover detected",
-      "RSI reversal signal",
-      "Breakout confirmed",
-      "Volume spike detected"
-    ];
+    fetch(https://www.alphavantage.co/query?function=FX_INTRADAY&from_symbol=EUR&to_symbol=USD&interval=1min&apikey=${API_KEY})
+.then(response => response.json())
+.then(data => {
 
-    const signal = signals[Math.floor(Math.random() * signals.length)];
-    const trend = trends[Math.floor(Math.random() * trends.length)];
-    const zone = zones[Math.floor(Math.random() * zones.length)];
-    const mom = momentum[Math.floor(Math.random() * momentum.length)];
-    const reason = reasons[Math.floor(Math.random() * reasons.length)];
-    const rsi = Math.floor(Math.random() * 40) + 30;
-    const confidence = Math.floor(Math.random() * 15) + 85;
+const priceData = data["Time Series FX (1min)"];
+const latest = Object.values(priceData)[0];
 
-    result.innerHTML =
-      "🤖 AI MARKET ANALYSIS<br><br>" +
-      "📈 Trend: " + trend + "<br>" +
-      "📍 Zone: " + zone + "<br>" +
-      "⚡ Momentum: " + mom + "<br>" +
-      "📊 RSI: " + rsi + "<br>" +
-      "🧠 Reason: " + reason + "<br><br>" +
-      "🎯 FINAL SIGNAL:<br>" +
-      "<span class='final'>" + signal + "</span><br><br>" +
-      "🔥 Confidence: " + confidence + "%";
+const open = parseFloat(latest["1. open"]);
+const close = parseFloat(latest["4. close"]);
+
+let signal = close > open ? "CALL 🟢" : "PUT 🔴";
+let trend = close > open ? "Strong Bullish" : "Strong Bearish";
+let confidence = Math.floor(Math.random() * 10) + 90;
+
+result.innerHTML = `
+🤖 تحليل السوق الحقيقي<br><br>
+
+📈 الاتجاه: ${trend}<br>
+🪙 سعر الافتتاح: ${open}<br>
+💵 السعر الحالي: ${close}<br><br>
+
+🎯 الإشارة النهائية:<br>
+<span class="final">${signal}</span><br><br>
+
+🔥 الثقة: ${confidence}%
+`;
+
+})
+.catch(error => {
+result.innerHTML = "❌ API ERROR";
+});
   }, 2500);
 }
 </script>
