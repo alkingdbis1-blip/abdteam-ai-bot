@@ -1,97 +1,136 @@
-<script>
-
-function generateSignal(){
-
-document.getElementById("result").innerHTML =
-"🤖 AI SCANNING MARKET...<br><br>" +
-"📡 Reading candles...<br>" +
-"📊 Checking trend...";
-
-setTimeout(function(){
-
-let signals = ["CALL 🟢","PUT 🔴","NO TRADE ⚠️"];
-
-let trends = [
-"Strong Bullish",
-"Strong Bearish",
-"Sideways Market"
-];
-
-let zones = [
-"Support Zone",
-"Resistance Zone",
-"Breakout Area",
-"Liquidity Grab"
-];
-
-let momentum = [
-"High Momentum",
-"Weak Momentum",
-"Explosive Movement"
-];
-
-let reasons = [
-"Trend continuation confirmed",
-"Strong candle rejection",
-"EMA crossover detected",
-"RSI reversal signal",
-"Breakout confirmed",
-"Volume spike detected"
-];
-
-let signal =
-signals[Math.floor(Math.random()*signals.length)];
-
-let confidence =
-Math.floor(Math.random()*15)+85;
-
-let rsi =
-Math.floor(Math.random()*40)+30;
-
-let emaFast =
-(Math.random()*100).toFixed(2);
-
-let emaSlow =
-(Math.random()*100).toFixed(2);
-
-document.getElementById("result").innerHTML =
-
-"🤖 AI MARKET ANALYSIS<br><br>" +
-
-"📈 Trend: " +
-trends[Math.floor(Math.random()*trends.length)] +
-"<br><br>" +
-
-"📍 Zone: " +
-zones[Math.floor(Math.random()*zones.length)] +
-"<br><br>" +
-
-"⚡ Momentum: " +
-momentum[Math.floor(Math.random()*momentum.length)] +
-"<br><br>" +
-
-"📊 RSI: " + rsi +
-"<br><br>" +
-
-"📉 EMA 9: " + emaFast +
-"<br>" +
-
-"📈 EMA 21: " + emaSlow +
-"<br><br>" +
-
-"🧠 Reason: " +
-reasons[Math.floor(Math.random()*reasons.length)] +
-"<br><br>" +
-
-"🎯 FINAL SIGNAL:<br>" +
-signal +
-"<br><br>" +
-
-"🔥 Confidence: " +
-confidence + "%";
-
-},2500);
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ABDTEAM AI SIGNALS</title>
+<style>
+body{
+  margin:0;
+  background:#050505;
+  color:white;
+  font-family:Arial;
+  text-align:center;
 }
+.box{
+  max-width:420px;
+  margin:70px auto;
+  background:#151515;
+  padding:28px;
+  border-radius:25px;
+  box-shadow:0 0 30px gold;
+}
+h1{color:gold;}
+select,button{
+  width:100%;
+  padding:15px;
+  margin-top:15px;
+  border-radius:12px;
+  border:none;
+  font-size:16px;
+}
+button{
+  background:gold;
+  color:black;
+  font-weight:bold;
+  cursor:pointer;
+}
+#result{
+  margin-top:25px;
+  font-size:18px;
+  line-height:1.8;
+}
+.final{
+  font-size:30px;
+  font-weight:bold;
+}
+</style>
+</head>
+<body>
 
+<div class="box">
+  <h1>ABDTEAM AI SIGNALS</h1>
+
+  <select id="pair">
+    <option>EUR/USD</option>
+    <option>GBP/USD</option>
+    <option>USD/JPY</option>
+    <option>USD/CHF</option>
+    <option>USD/CAD</option>
+    <option>AUD/USD</option>
+    <option>NZD/USD</option>
+    <option>EUR/JPY</option>
+    <option>GBP/JPY</option>
+    <option>EUR/GBP</option>
+    <option>EUR/CHF</option>
+    <option>EUR/CAD</option>
+    <option>EUR/AUD</option>
+    <option>GBP/CHF</option>
+    <option>GBP/CAD</option>
+    <option>AUD/JPY</option>
+    <option>AUD/CAD</option>
+    <option>AUD/CHF</option>
+    <option>CAD/JPY</option>
+    <option>CHF/JPY</option>
+    <option>NZD/JPY</option>
+  </select>
+
+  <select id="time">
+    <option>1 Minute</option>
+    <option>2 Minutes</option>
+    <option>5 Minutes</option>
+  </select>
+
+  <button onclick="generateSignal()">START ANALYSIS</button>
+
+  <div id="result"></div>
+</div>
+
+<script>
+function generateSignal(){
+  const result = document.getElementById("result");
+
+  result.innerHTML =
+    "🤖 AI SCANNING MARKET...<br>" +
+    "📡 Reading candles...<br>" +
+    "📊 Checking trend...<br>" +
+    "⚡ Measuring momentum...";
+
+  setTimeout(function(){
+    const signals = ["CALL 🟢", "PUT 🔴", "NO TRADE ⚠️"];
+    const trends = ["Strong Bullish", "Strong Bearish", "Sideways Market"];
+    const zones = ["Support Zone", "Resistance Zone", "Breakout Area", "Liquidity Grab"];
+    const momentum = ["High Momentum", "Weak Momentum", "Explosive Movement"];
+    const reasons = [
+      "Trend continuation confirmed",
+      "Strong candle rejection",
+      "EMA crossover detected",
+      "RSI reversal signal",
+      "Breakout confirmed",
+      "Volume spike detected"
+    ];
+
+    const signal = signals[Math.floor(Math.random() * signals.length)];
+    const trend = trends[Math.floor(Math.random() * trends.length)];
+    const zone = zones[Math.floor(Math.random() * zones.length)];
+    const mom = momentum[Math.floor(Math.random() * momentum.length)];
+    const reason = reasons[Math.floor(Math.random() * reasons.length)];
+    const rsi = Math.floor(Math.random() * 40) + 30;
+    const confidence = Math.floor(Math.random() * 15) + 85;
+
+    result.innerHTML =
+      "🤖 AI MARKET ANALYSIS<br><br>" +
+      "📈 Trend: " + trend + "<br>" +
+      "📍 Zone: " + zone + "<br>" +
+      "⚡ Momentum: " + mom + "<br>" +
+      "📊 RSI: " + rsi + "<br>" +
+      "🧠 Reason: " + reason + "<br><br>" +
+      "🎯 FINAL SIGNAL:<br>" +
+      "<span class='final'>" + signal + "</span><br><br>" +
+      "🔥 Confidence: " + confidence + "%";
+  }, 2500);
+}
 </script>
+
+</body>
+</html>
